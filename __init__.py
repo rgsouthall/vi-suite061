@@ -44,6 +44,7 @@ else:
     try:
         import matplotlib.pyplot as plt
         from kivy.app import App
+        print('Using system libraries')
     except:
         print('Using built-in libraries')
         if sys.version_info[1] == 9:    
