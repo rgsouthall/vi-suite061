@@ -45,6 +45,7 @@ else:
         import matplotlib.pyplot as plt
         from kivy.app import App
     except:
+        print('Using built-in libraries')
         if sys.version_info[1] == 9:    
             if os.environ.get('PYTHONPATH'):
                 if os.path.join(addonpath, 'Python', sys.platform) not in os.environ['PYTHONPATH']:
