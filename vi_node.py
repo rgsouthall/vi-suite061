@@ -2980,9 +2980,9 @@ class No_Flo_NG(Node, ViNodes):
                 else:
                     row = layout.row()
                     row.label(text = 'Netgen not found')
-            else:
-                row = layout.row()
-                row.label(text = 'No OpenFOAM directory set')
+        else:
+            row = layout.row()
+            row.label(text = 'No OpenFOAM directory set')
     
     def update(self):
         if self.outputs.get('Mesh out'):
