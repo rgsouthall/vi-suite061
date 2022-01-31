@@ -676,7 +676,7 @@ def udidacalcapply(self, scene, frames, rccmds, simnode, curres, pfile):
     (luxmin, luxmax) = (simnode['coptions']['dalux'], simnode['coptions']['asemax'])
     vecvals = array([vv[2:] for vv in vecvals if vv[1] < simnode['coptions']['weekdays']]).astype(float32)
     hours = vecvals.shape[0]
-    restypes = ('da', 'sda', 'ase', 'res', 'udilow', 'udisup', 'udiauto', 'udihi', 'firradh', 'firradhm2', 'maxlux', 'minlux', 'avelux')
+    restypes = ('da', 'sda', 'sv', 'ase', 'res', 'udilow', 'udisup', 'udiauto', 'udihi', 'firradh', 'firradhm2', 'maxlux', 'minlux', 'avelux')
     self['livires']['cbdm_days'] = cbdm_days
     self['livires']['cbdm_hours'] = cbdm_hours
 
@@ -688,12 +688,9 @@ def udidacalcapply(self, scene, frames, rccmds, simnode, curres, pfile):
 
         for restype in restypes:
             geom.layers.float.new('{}{}'.format(restype, frame))
-        (resda, ressda, resase, res, resudilow, resudisup, resudiauto, resudihi, firrad, firradm2, maxillu, minillu, aveillu) = [geom.layers.float['{}{}'.format(r, frame)] for r in restypes]
-
-        if simnode['coptions']['buildtype'] == '1':
-            geom.layers.float.new('sv{}'.format(frame))
-            ressv = geom.layers.float['sv{}'.format(frame)]
-        
+            
+        (resda, ressda, ressv, resase, res, resudilow, resudisup, resudiauto, resudihi, firrad, firradm2, maxillu, minillu, aveillu) = [geom.layers.float['{}{}'.format(r, frame)] for r in restypes]
+       
         if geom.layers.string.get('rt{}'.format(frame)):
             rtframe = frame
         else:
